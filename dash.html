@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="logo1.jpg" type="image/x-icon">
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #3c00a0;
+        }
+
+        /* Masonry Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card Design */
+        .grid-item {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .grid-item h3 {
+            padding: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #b69ae3;
+            margin-top: -10px;
+        }
+
+        /* Infinite Scroll Loader (Optional) */
+        .loader {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="grid">
+            <div class="grid-item">
+                <img src="background.webp" alt="Image 1">
+                <h3>Beautiful Nature</h3>
+            </div>
+            <div class="grid-item">
+                <img src="logo.jpeg" alt="Image 2">
+                <h3>Mountain Adventure</h3>
+            </div>
+            <div class="grid-item">
+                <img src="logo1.jpg" alt="Image 3">
+                <h3>Cityscape</h3>
+            </div>
+            <div class="grid-item">
+                <img src="bg2.jpg" alt="Image 4">
+                <h3>Serene Beach</h3>
+            </div>
+            <div class="grid-item">
+                <img src="bk.jpg" alt="Image 5">
+                <h3>Winter Wonderland</h3>
+            </div>
+            <div class="grid-item">
+                <img src="background.webp" alt="Image 6">
+                <h3>Peaceful Forest</h3>
+            </div>
+        </div>
+        <!-- Optional Loader for Infinite Scroll -->
+        <div class="loader">Loading more images...</div>
+    </div>
+
+    <!-- Optional JavaScript for Infinite Scrolling -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            if (scrollTop + clientHeight >= scrollHeight - 5) {
+                loadMoreImages();  // You can implement a function to load more images
+            }
+        });
+
+        function loadMoreImages() {
+            // Simulate loading more images (you can replace this with actual loading logic)
+            const grid = document.querySelector('.grid');
+            for (let i = 0; i < 6; i++) {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
+                gridItem.innerHTML = `
+                    <img src="https://via.placeholder.com/400x300" alt="New Image">
+                    <h3>New Image ${i + 1}</h3>
+                `;
+                grid.appendChild(gridItem);
+            }
+        }
+    </script>
+
+</body>
+</html>
